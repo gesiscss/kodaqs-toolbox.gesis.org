@@ -79,3 +79,10 @@ of the main pipeline but it is a faster way of testing new tool integration.
 - deploy.sh deploys andrew to the local webserver
 - deploy_minimal.sh deploys the minimal example to the webserver
 
+## New Tools / Updated Tools
+
+- add the entry for the new tool in the following files: 
+  - content-contributions.json (with the git tag for fixed version)
+  - tags.json (to generated link page)
+  - zettelkasten.json (for the hierarchy generation)
+

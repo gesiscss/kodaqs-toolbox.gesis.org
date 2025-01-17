@@ -49,6 +49,10 @@
       {
         "web_address": "https://github.com/StefanJuenger/zipmatching",
         "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/lukasbirki/tool_sqp",
+        "filename": "index.qmd"
       }
     ]
   },
@@ -75,6 +79,10 @@
       },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/lukasbirki/tool_sqp",
         "filename": "index.qmd"
       }
     ]

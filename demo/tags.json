@@ -40,5 +40,16 @@
       "Multilingual Text",
       "Social Media"
     ]
+  },
+  {
+    "web_address": "https://github.com/lukasbirki/tool_sqp",
+    "filename": "index.qmd",
+    "tags": [
+      "survey item",
+      "quality estimation",
+      "comparative analysis",
+      "coding",
+      "questionnaire design"
+    ]
   }
 ]
