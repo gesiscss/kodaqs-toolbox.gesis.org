@@ -32,6 +32,15 @@
     "web_address": "https://github.com/lukasbirki/tool_sqp",
     "filename": "index.qmd",
     "version": "v2.0"
+  },
+  {
+    "web_address": "https://github.com/BjoernRohr/KODAQS-Toolbox-SampcompR",
+    "filename": "Tool_SampcompR.qmd",
+    "version": "v1.0"
+  },
+  {
+    "web_address": "https://github.com/frohleon/tesd_tool",
+    "filename": "index.qmd",
+    "version": "v0.0.2"
   }
 ]
-

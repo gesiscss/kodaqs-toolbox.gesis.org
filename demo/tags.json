@@ -1,55 +1,46 @@
 [
   {
+    "web_address": "https://github.com/kraemefe/resquin-tool-application",
+    "filename": "Resquin_Tutorial.qmd",
+    "version": "v1.0.0"
+  },
+  {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
-    "filename": "index.qmd",
-    "tags": [
-      "Spatial Data",
-      "Data Linking",
-      "Areal Matching",
-      "Measurement error"
-    ]
+    "filename": "index.qmd"
   },
   {
     "web_address": "https://github.com/juliandehne/delab-trees",
     "filename": "index.ipynb",
-    "tags": [
-      "Social Media",
-      "Validity",
-      "Network Analysis",
-      "Python"
-    ]
+    "version": "v0.4.2"
   },
   {
     "web_address": "https://github.com/lukasbirki/tool_valitext",
     "filename": "index.qmd",
-    "tags": [
-      "Measurement error",
-      "Validity",
-      "Text Mining",
-      "Computational Methods",
-      "Self-Assessment"
-    ]
+    "version": "final"
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
+    "filename": "index.qmd",
+    "version": "v1"
   },
   {
     "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
     "filename": "index.qmd",
-    "tags": [
-      "Measurement error",
-      "Preprocessing",
-      "Text Mining",
-      "Multilingual Text",
-      "Social Media"
-    ]
+    "version": "v1.0.3"
   },
   {
     "web_address": "https://github.com/lukasbirki/tool_sqp",
     "filename": "index.qmd",
-    "tags": [
-      "survey item",
-      "quality estimation",
-      "comparative analysis",
-      "coding",
-      "questionnaire design"
-    ]
+    "version": "v2.0"
+  },
+  {
+    "web_address": "https://github.com/BjoernRohr/KODAQS-Toolbox-SampcompR",
+    "filename": "Tool_SampcompR.qmd",
+    "version": "v1.0"
+  },
+  {
+    "web_address": "https://github.com/frohleon/tesd_tool",
+    "filename": "index.qmd",
+    "version": "v0.0.2"
   }
 ]

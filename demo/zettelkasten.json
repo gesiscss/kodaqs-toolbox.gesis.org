@@ -19,6 +19,10 @@
       {
         "web_address": "https://github.com/juliandehne/delab-trees",
         "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/BjoernRohr/KODAQS-Toolbox-SampcompR",
+        "filename": "Tool_SampcompR.qmd"
       }
     ]
   },
@@ -52,6 +56,10 @@
       },
       {
         "web_address": "https://github.com/lukasbirki/tool_sqp",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/Tool_SampcompR.qmd",
         "filename": "index.qmd"
       }
     ]
