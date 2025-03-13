@@ -61,9 +61,21 @@ The file main.R is the entrypoint for the pipeline. It consist of the following 
   3. copy/using valumes to move the resulting static markdown to the repositories with underscore.  
 - automatically create a quarto structure for composing the different repositories into one website
 
-### Using start.R for Debugging
+### Using start.R or start_minimal.R for Debugging
 
-The start.R script assumes that your conda env is called *base* and it needs you to set the working dir in line 5
+Both `start.R` and `start_minimal.R` assume that the conda / mamba environment for `andrew` is activated, for example:
+
+```bash
+mamba activate env_name
+```
+
+or for a single command:
+
+```bash
+mamba run -n env_name Rscript start.R
+```
+
+In addition, you need to set the working dir, for example:
 
 ```R 
 setwd("/home/dehnejn/gitlab/andrew")
