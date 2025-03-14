@@ -28,9 +28,13 @@ main <- function(config_filename = "config.yaml",
 
   # environment_config
   environment_config <- config$environment
+
+  # check if rootless docker is used
+  is_docker_rootless <- FALSE
   if (environment_config$rootless) {
     # working_dir <- environment_config$working_dir
     docker_host <- environment_config$docker_host
+    is_docker_rootless <- TRUE
     # hacked the docker rootless with this:
     print("setting DOCKER_HOST to rootless (export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock)")
     Sys.setenv(DOCKER_HOST = docker_host)
@@ -100,7 +104,7 @@ main <- function(config_filename = "config.yaml",
     # the produced quarto markdown files are in the directories without underscore
     if (any(stages == "render_contributions")) {
       logger::log_info("STAGE: Rendering contributions")
-      tools_data <- render_contributions(tools_data)
+      tools_data <- render_contributions(tools_data, is_docker_rootless)
     } else {
       # add fake build flag if render_contribution is to be skipped
       tools_data$status <- "Built"

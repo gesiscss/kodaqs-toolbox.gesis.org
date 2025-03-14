@@ -32,12 +32,18 @@ create_output_directory <- function(output_location) {
   }
 }
 
-render_single_contribution <- function(contribution_row) {
+render_single_contribution <- function(contribution_row, is_docker_rootless) {
   logger::log_debug("Rendering {contribution_row['filename']} from {contribution_row['web_address']}")
 
-  host_user_id <- system("id -u", intern = TRUE)
-  host_group_id <- system("id -g", intern = TRUE)
-  logger::log_debug("Running with user ID {host_user_id} and group id {host_group_id}.")
+  if (is_docker_rootless) {
+    host_user_id <- 0
+    host_group_id <- 0
+    logger::log_debug("Running with user ID 0 and group ID 0, i.e., rootless.")
+  } else {
+    host_user_id <- system("id -u", intern = TRUE)
+    host_group_id <- system("id -g", intern = TRUE)
+    logger::log_debug("Running with user ID {host_user_id} and group ID {host_group_id}.")
+  }
 
   RENDER_MATRIX <- list(
     "md" = c(
@@ -211,9 +217,9 @@ render_single_contribution <- function(contribution_row) {
 #' @export
 #'
 #' @examples
-render_contributions <- function(all_contributions) {
+render_contributions <- function(all_contributions, is_docker_rootless) {
   all_contributions$status <- all_contributions |>
-    apply(1, render_single_contribution)
+    apply(1, render_single_contribution, is_docker_rootless)
 
   return(all_contributions)
 }
