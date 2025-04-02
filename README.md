@@ -55,10 +55,10 @@ Rscript -e "andrew::main(source_dir='demo')"
 The file main.R is the entrypoint for the pipeline. It consist of the following steps:
 
 - downloading (cloning the repositories) in download_contributions.R. They will be stored in the repository names without underscore.
-- compiling the contributions to markdown and removing all dynamic elements (should be static md afterwards). This is done in render_contributions. 
+- compiling the contributions to markdown and removing all dynamic elements (should be static md afterwards). This is done in render_contributions.
   1. create a docker container depending on the needs (python R etc.)
   2. run compilation scripts in the container (inst/dockerscripts) to map the different repository types and entry points
-  3. copy/using valumes to move the resulting static markdown to the repositories with underscore.  
+  3. copy/using valumes to move the resulting static markdown to the repositories with underscore.
 - automatically create a quarto structure for composing the different repositories into one website
 
 ### Using start.R or start_minimal.R for Debugging
@@ -75,16 +75,12 @@ or for a single command:
 mamba run -n env_name Rscript start.R
 ```
 
-In addition, you need to set the working dir, for example:
-
-```R 
-setwd("/home/dehnejn/gitlab/andrew")
-```
+Both scripts need to be run from the root directory of the repository.
 
 ### Using start_minimal.R for Running the minimal example
 
 In the directory minimal_example there is a pipeline to build only one tool to test the process. It does not fulfill all the requirements
-of the main pipeline but it is a faster way of testing new tool integration. 
+of the main pipeline but it is a faster way of testing new tool integration.
 
 ## Deployment
 
@@ -93,7 +89,7 @@ of the main pipeline but it is a faster way of testing new tool integration.
 
 ## New Tools / Updated Tools
 
-- add the entry for the new tool in the following files: 
+- add the entry for the new tool in the following files:
   - content-contributions.json (with the git tag for fixed version)
   - tags.json (to generated link page)
   - zettelkasten.json (for the hierarchy generation)

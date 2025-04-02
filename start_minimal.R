@@ -1,6 +1,3 @@
-# set wd
-setwd("/home/dehnejn/gitlab/andrew")
-
 # load project deps
 devtools::load_all()
 
