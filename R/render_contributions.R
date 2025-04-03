@@ -32,7 +32,7 @@ create_output_directory <- function(output_location) {
   }
 }
 
-render_single_contribution <- function(contribution_row, is_docker_rootless) {
+render_single_contribution <- function(contribution_row, is_docker_rootless = FALSE) {
   logger::log_debug("Rendering {contribution_row['filename']} from {contribution_row['web_address']}")
 
   if (is_docker_rootless) {
@@ -217,7 +217,7 @@ render_single_contribution <- function(contribution_row, is_docker_rootless) {
 #' @export
 #'
 #' @examples
-render_contributions <- function(all_contributions, is_docker_rootless) {
+render_contributions <- function(all_contributions, is_docker_rootless = FALSE) {
   all_contributions$status <- all_contributions |>
     apply(1, render_single_contribution, is_docker_rootless)
 
