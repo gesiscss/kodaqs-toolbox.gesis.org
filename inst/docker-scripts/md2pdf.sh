@@ -12,7 +12,7 @@ basename2render=$(basename ${file2render})
 input_dirname=$dirname2render/${basename2render%.*}
 input_basename=index.md
 
-cd ~/andrew/$input_dirname
+cd /home/mambauser/andrew/$input_dirname
 
 # Need to move the .qmd file
 # Workaround for https://github.com/quarto-dev/quarto-cli/issues/6583
