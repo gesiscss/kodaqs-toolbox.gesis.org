@@ -1,46 +1,76 @@
 [
   {
-    "web_address": "https://github.com/kraemefe/resquin-tool-application",
-    "filename": "Resquin_Tutorial.qmd",
-    "version": "v1.0.0"
-  },
-  {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
-    "filename": "index.qmd"
+    "filename": "index.qmd",
+    "tags": [
+      "Spatial Data",
+      "Data Linking",
+      "Areal Matching",
+      "Measurement Error"
+    ]
   },
   {
     "web_address": "https://github.com/juliandehne/delab-trees",
     "filename": "index.ipynb",
-    "version": "v0.4.2"
+    "tags": [
+      "Social Media",
+      "Validity",
+      "Network Analysis",
+      "Python"
+    ]
   },
   {
     "web_address": "https://github.com/lukasbirki/tool_valitext",
     "filename": "index.qmd",
-    "version": "final"
-  },
-  {
-    "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
-    "filename": "index.qmd",
-    "version": "v1"
+    "tags": [
+      "Measurement Error",
+      "Validity",
+      "Text Mining",
+      "Computational Methods",
+      "Self-Assessment"
+    ]
   },
   {
     "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
     "filename": "index.qmd",
-    "version": "v1.0.3"
+    "tags": [
+      "Measurement Error",
+      "Preprocessing",
+      "Text Mining",
+      "Multilingual Text",
+      "Social Media"
+    ]
   },
   {
     "web_address": "https://github.com/lukasbirki/tool_sqp",
     "filename": "index.qmd",
-    "version": "v2.0"
+    "tags": [
+      "Survey Item",
+      "Quality Estimation",
+      "Comparative Analysis",
+      "Coding",
+      "Questionnaire Design"
+    ]
   },
   {
     "web_address": "https://github.com/BjoernRohr/KODAQS-Toolbox-SampcompR",
     "filename": "Tool_SampcompR.qmd",
-    "version": "v1.0"
+    "tags": [
+      "Response Bias",
+      "Benchmark Comparison",
+      "Bias Visualization",
+      "Nonresponse Bias",
+      "Data Quality"
+    ]
   },
   {
     "web_address": "https://github.com/frohleon/tesd_tool",
     "filename": "index.qmd",
-    "version": "v0.0.2"
+    "tags": [
+      "Data Documentation",
+      "Data Collection Process",
+      "Instrinsic Data Quality",
+      "Extrinsic Data Quality"
+    ]
   }
 ]
