@@ -59,7 +59,7 @@
         "filename": "index.qmd"
       },
       {
-        "web_address": "https://github.com/Tool_SampcompR.qmd",
+        "web_address": "https://github.com/frohleon/tesd_tool",
         "filename": "index.qmd"
       }
     ]
@@ -92,6 +92,10 @@
       {
         "web_address": "https://github.com/lukasbirki/tool_sqp",
         "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/BjoernRohr/KODAQS-Toolbox-SampcompR",
+        "filename": "Tool_SampcompR.qmd"
       }
     ]
   },
@@ -119,12 +123,7 @@
     "content_set": [
       {
         "web_address": "https://github.com/lukasbirki/tool_valitext.git",
-        "filename": "index.qmd",
-        "tags": [
-          "computational text analysis",
-          "measurement",
-          "validity"
-        ]
+        "filename": "index.qmd"
       },
       {
         "web_address": "https://github.com/juliandehne/delab-trees",
@@ -132,6 +131,10 @@
       },
       {
         "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/frohleon/tesd_tool",
         "filename": "index.qmd"
       }
     ]
