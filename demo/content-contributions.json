@@ -6,7 +6,8 @@
   },
   {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
-    "filename": "index.qmd"
+    "filename": "index.qmd",
+    "version": "v1.0"
   },
   {
     "web_address": "https://github.com/juliandehne/delab-trees",
