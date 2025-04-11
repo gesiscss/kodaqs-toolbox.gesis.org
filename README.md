@@ -20,7 +20,7 @@ The collection is organised in two levels.
 
 - [Docker](https://www.docker.com/)
   - a) add andrew as a docker user so it does not need superuser privilege
-  - b) alternatively: install rootless docker. In this case you need to set docker_host in the config.yaml or config_minimal.yaml
+  - b) alternatively: install rootless docker
 - Quarto >= 1.3
 - R == 4.2.3 (for remote Intellij development)
 - Python
