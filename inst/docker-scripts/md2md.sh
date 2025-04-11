@@ -6,6 +6,8 @@
 #
 # md2md.sh
 
+echo "starting md2md.sh"
+
 dirname2render=$(dirname ${file2render})
 basename2render=$(basename ${file2render})
 
@@ -15,6 +17,9 @@ output_basename=index.md
 mkdir --parents $output_dirname
 
 git --version
+
+# ignore ownership check in git
+git config --global --add safe.directory /home/andrew
 
 git_hash=$(git rev-parse HEAD)
 

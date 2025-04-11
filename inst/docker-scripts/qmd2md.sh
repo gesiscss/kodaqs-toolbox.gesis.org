@@ -18,6 +18,9 @@ mkdir --parents $output_dirname
 
 git --version
 
+# ignore ownership check in git
+git config --global --add safe.directory /home/andrew
+
 git_hash=$(git rev-parse HEAD)
 
 # If git > 2.25

@@ -6,6 +6,8 @@
 #
 # docx2md.sh
 
+echo "starting docx2md.sh"
+
 if test -f "/opt/quarto/bin/tools/pandoc"
 then
     export PANDOC=/opt/quarto/bin/tools/pandoc
@@ -22,6 +24,9 @@ output_basename=index.md
 mkdir --parents $output_dirname
 
 git --version
+
+# ignore ownership check in git
+git config --global --add safe.directory /home/andrew
 
 git_hash=$(git rev-parse HEAD)
 

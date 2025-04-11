@@ -6,6 +6,8 @@
 #
 # Rmd2md.sh
 
+echo "starting Rmd2md.sh"
+
 Rmd_file=$file2render
 file2render=${Rmd_file/Rmd/qmd}
 
@@ -18,6 +20,9 @@ output_basename=index.md
 mkdir --parents $output_dirname
 
 git --version
+
+# ignore ownership check in git
+git config --global --add safe.directory /home/andrew
 
 git_hash=$(git rev-parse HEAD)
 
