@@ -10,9 +10,3 @@ testing:
   minimal_example: true
   debug: true
   trace_files: false # todo add this as switch to only trace files if debugging an issue
-
-
-environment:
-  rootless: true
-  # in case of rootless
-  docker_host: "unix:///run/user/1003/docker.sock"

@@ -30,13 +30,16 @@ main <- function(config_filename = "config.yaml",
   environment_config <- config$environment
 
   # check if rootless docker is used
-  is_docker_rootless <- FALSE
-  if (environment_config$rootless) {
-    # working_dir <- environment_config$working_dir
-    docker_host <- environment_config$docker_host
-    is_docker_rootless <- TRUE
-    # hacked the docker rootless with this:
-    print("setting DOCKER_HOST to rootless (export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock)")
+  is_docker_rootless <- check_docker_rootless()
+
+  if (is_docker_rootless) {
+    # set the DOCKER_HOST environment variable
+    uid <- system("id -u", intern = TRUE)
+    docker_host <- sprintf("unix:///run/user/%s/docker.sock", uid)
+
+    logger::log_info("Docker is running as rootless.")
+    logger::log_info("Setting DOCKER_HOST to {docker_host}")
+
     Sys.setenv(DOCKER_HOST = docker_host)
   }
 
@@ -162,4 +165,24 @@ list_files_in_container <- function(image, path) {
 
   # Return the list of files
   return(files)
+}
+
+# Function to check if Docker is running in rootless mode
+check_docker_rootless <- function() {
+  # try to get docker info
+  info <- tryCatch(
+    system("docker info --format '{{.SecurityOptions}}'", intern = TRUE),
+    error = function(e) return(NULL)
+  )
+
+  if (is.null(info)) {
+    stop("Failed to retrieve Docker info. Is Docker running?")
+  }
+
+  # check if "name=rootless" appears in the security options
+  if (grepl("name=rootless", info)) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
 }

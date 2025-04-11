@@ -9,8 +9,3 @@ stages:
 testing:
   minimal_example: false
   debug: true
-
-environment:
-  rootless: true
-  # in case of rootless
-  docker_host: "unix:///run/user/1003/docker.sock"
