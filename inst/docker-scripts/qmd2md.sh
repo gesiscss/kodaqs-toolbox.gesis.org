@@ -4,7 +4,7 @@
 #
 # Syntax:
 #
-# ipynb2md.sh
+# qmd2md.sh
 
 echo "starting qmd2md.sh"
 
