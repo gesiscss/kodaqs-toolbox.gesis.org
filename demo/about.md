@@ -17,7 +17,7 @@ Meet the team behind the KODAQS Toolbox, which develops, reviews, and refines th
 **Fabienne Krämer**  
 *Coordination & Content Creation - Survey Data*
 
-**Julian Dehne**  
+**Jun Sun**  
 *Learning Technologies and Development*
 
 **Yannik Peters**  
