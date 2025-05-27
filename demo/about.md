@@ -14,24 +14,27 @@ Meet the team behind the KODAQS Toolbox, which develops, reviews, and refines th
 
 ::: {.column width="50%"}
 
-**Fabienne Krämer**  
+**Fabienne Krämer**
 *Coordination & Content Creation - Survey Data*
 
-**Jun Sun**  
+**Jun Sun**
 *Learning Technologies and Development*
 
-**Yannik Peters**  
+**Yannik Peters**
 *Content Creation - Digital Behavioral Data*
 
 :::
 
 ::: {.column width="50%"}
 
-**Anne Stroppe**  
+**Anne Stroppe**
 *Content Creation - Linked Data*
 
-**Çağla Yildiz**  
+**Çağla Yildiz**
 *Content Creation - Survey Data*
+
+**Julian Dehne**
+*Alumnus*
 
 :::
 
@@ -45,20 +48,20 @@ Meet the team behind the KODAQS Toolbox, which develops, reviews, and refines th
 
 ::: {.column width="50%"}
 
-**Henning Silber**  
+**Henning Silber**
 *University of Michigan*
 
-**Pascal Siegers**  
+**Pascal Siegers**
 *GESIS*
 
 :::
 
 ::: {.column width="50%"}
 
-**Stefan Jünger**  
+**Stefan Jünger**
 *GESIS*
 
-**Katrin Weller**  
+**Katrin Weller**
 *GESIS*
 
 :::
@@ -71,7 +74,7 @@ Meet the team behind the KODAQS Toolbox, which develops, reviews, and refines th
 
 **Jessica Daikeler**
 
-![Jessica Daikeler](https://gris.gesis.org/files/photos/916.png){width=30%}  
+![Jessica Daikeler](https://gris.gesis.org/files/photos/916.png){width=30%}
 
 ---
 
