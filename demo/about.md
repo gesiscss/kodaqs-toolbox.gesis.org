@@ -78,5 +78,10 @@ Meet the team behind the KODAQS Toolbox, which develops, reviews, and refines th
 
 ---
 
+## Funding
+
+![BMFTR Logo](img/logo_bmftr.png){width=50%}
+![EU Logo](img/logo_eu.png){width=30%}
+
 
 {{< include impressum.md >}}
