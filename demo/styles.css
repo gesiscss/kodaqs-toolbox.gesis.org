@@ -10,6 +10,9 @@ DOCX custom styles are annotated into data-custom-style.
     color: #FF6100;
 }
 
+.methods_hub_nav_teaser {
+    position: relative;
+}
 
 .methods_hub_nav_teaser img {
     width: 100%;
@@ -27,8 +30,31 @@ DOCX custom styles are annotated into data-custom-style.
     text-align: center;
 } */
 
-#carouselExampleCaptions{
+#carouselExampleCaptions {
     margin-bottom: 20px;
 }
 
+/* Truncate method titles in the gallery */
+h3.method_title_gallery {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
 
+/* Show full text on hover */
+h3.method_title_gallery:hover::after {
+    content: attr(data-fulltext);
+    position: absolute;
+    background: #fff;
+    border-radius: 4px;
+    left: 0;
+    white-space: normal;
+    width: max-content;
+    z-index: 10;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* Embeded PDF height */
+embed.img-fluid {
+    height: 800px;
+}
