@@ -14,8 +14,6 @@
 
 ## Included Tools
 
-This is an aggregation of learning resources in different repositories listed [here](https://github.com/GESIS-Methods-Hub/andrew/blob/main/demo/content-contributions.json). The integrated tools all report on their license.
+This is an aggregation of learning resources in different repositories listed [here](status.html). The integrated tools all report on their license.
 The aggregation and the title menu are part of [andrew](https://github.com/GESIS-Methods-Hub/andrew). 
-
-**Note**: This is a beta version of the KODAQS Toolbox and serves for continous improvements of software and tools until officially launched.
 
