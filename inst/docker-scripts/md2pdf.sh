@@ -22,7 +22,7 @@ mv *.qmd $tmp_dir
 cat > _quarto.yml <<EOF
 format:
   pdf:
-    pdf-engine: lualatex
+    pdf-engine: lualatex 
     papersize: a4
     geometry:
       - top=25mm
@@ -37,6 +37,12 @@ format:
       - text: |
           \usepackage{luatexja}
 EOF
+
+# cleaning up the specific html tags
+sed -i '/<script[^>]*>.*<\/script>/d' $input_basename
+sed -i '/<script[^>]*>/d' $input_basename
+sed -i '/<script.*src="Tool_SampcompR_files.*<\/script>/d' $input_basename
+sed -i '/<link.*href="Tool_SampcompR_files.*>/d' $input_basename
 
 quarto \
     render $input_basename \
