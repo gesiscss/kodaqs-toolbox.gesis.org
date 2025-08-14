@@ -22,7 +22,7 @@ mv *.qmd $tmp_dir
 cat > _quarto.yml <<EOF
 format:
   pdf:
-    pdf-engine: lualatex 
+    pdf-engine: lualatex
     papersize: a4
     geometry:
       - top=25mm
@@ -38,18 +38,18 @@ format:
           \usepackage{luatexja}
 EOF
 
-# cleaning up the specific html tags
-sed -i '/<script[^>]*>.*<\/script>/d' $input_basename
-sed -i '/<script[^>]*>/d' $input_basename
-sed -i '/<script.*src="Tool_SampcompR_files.*<\/script>/d' $input_basename
-sed -i '/<link.*href="Tool_SampcompR_files.*>/d' $input_basename
+# cleaning up scripts and links
+cp $input_basename markdown-render-pdf.md
+
+sed -i '/^\s*<script[^>]*>/d' markdown-render-pdf.md
+sed -i '/^\s*<link[^>]*>/d' markdown-render-pdf.md
 
 quarto \
-    render $input_basename \
+    render markdown-render-pdf.md \
     --to pdf \
     --output index.pdf
 
-rm _quarto.yml
+rm _quarto.yml markdown-render-pdf.md
 
 # Need to move the .qmd file back
 mv $tmp_dir/*.qmd .
