@@ -43,5 +43,10 @@
     "web_address": "https://github.com/frohleon/tesd_tool",
     "filename": "index.qmd",
     "version": "v0.0.2"
+  },
+  {
+    "web_address": "https://github.com/gesiscss/tubecleanr_tool",
+    "filename": "index.qmd",
+    "version": "v1.0.0"
   }
 ]

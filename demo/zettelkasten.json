@@ -61,6 +61,10 @@
       {
         "web_address": "https://github.com/frohleon/tesd_tool",
         "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/gesiscss/tubecleanr_tool",
+        "filename": "index.qmd"
       }
     ]
   },
@@ -135,6 +139,10 @@
       },
       {
         "web_address": "https://github.com/frohleon/tesd_tool",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/gesiscss/tubecleanr_tool",
         "filename": "index.qmd"
       }
     ]
