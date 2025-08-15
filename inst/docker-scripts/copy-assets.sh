@@ -24,3 +24,9 @@ find . \
     -o \( -type f -iname '*.cff' \) \
     \) | \
     xargs -I {} cp --parents {} $output_dirname
+
+find . \
+    \( \
+    \( -type d -iname 'libs' \) \
+    \) | \
+    xargs -I {} cp -r --parents {} $output_dirname
