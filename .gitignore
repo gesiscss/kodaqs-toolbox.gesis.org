@@ -96,9 +96,6 @@ env.yaml
 conda-lock.yml
 
 # Package-related files
-DESCRIPTION
-LICENSE
-NAMESPACE
 _pkgdown.yml
 
 # Man files and documentation
