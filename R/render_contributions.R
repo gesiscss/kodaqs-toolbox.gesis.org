@@ -32,7 +32,7 @@ create_output_directory <- function(output_location) {
   }
 }
 
-render_single_contribution <- function(contribution_row, is_docker_rootless = FALSE) {
+render_single_contribution <- function(contribution_row, is_docker_rootless = FALSE, doi_mapping = NULL) {
   logger::log_debug("Rendering {contribution_row['filename']} from {contribution_row['web_address']}")
 
   if (is_docker_rootless) {
@@ -171,8 +171,8 @@ render_single_contribution <- function(contribution_row, is_docker_rootless = FA
   # add the citation.cff data if available
   index_md <- file.path(output_location, file2render_basename, "index.md")
   citation_cff <- file.path(output_location, file2render_basename, "CITATION.cff")
-  update_citation_metadata(citation_file = citation_cff, output_file = index_md)
-
+  update_citation_metadata(citation_file = citation_cff, output_file = index_md, doi_mapping = doi_mapping)
+  
   if (sum_docker_return_value == 0) {
     build_status <- "Built"
 
@@ -218,8 +218,28 @@ render_single_contribution <- function(contribution_row, is_docker_rootless = FA
 #'
 #' @examples
 render_contributions <- function(all_contributions, is_docker_rootless = FALSE) {
+  
+  # Extract DOIs from zettelkasten.json
+  current_dir <- getwd()
+  zettelkasten_path <- file.path(dirname(current_dir), "demo", "zettelkasten.json")
+  doi_mapping <- list()
+  zettelkasten_data <- jsonlite::read_json(zettelkasten_path)
+  for (category in zettelkasten_data) {
+    if (!is.null(category$content_set) && length(category$content_set) > 0) {
+      for (content in category$content_set) {
+        if (!is.null(content$web_address) && !is.null(content$doi) && 
+            content$doi != "#To_be_added" && content$doi != "") {
+          web_addr <- gsub("\\.git$", "", content$web_address)
+          doi_mapping[[web_addr]] <- content$doi
+        }
+      }
+    }
+  }
+  
   all_contributions$status <- all_contributions |>
-    apply(1, render_single_contribution, is_docker_rootless)
+    apply(1, function(contribution_row) {
+      render_single_contribution(contribution_row, is_docker_rootless, doi_mapping)
+    })
 
   return(all_contributions)
 }
@@ -227,31 +247,75 @@ render_contributions <- function(all_contributions, is_docker_rootless = FALSE) 
 #' Use CITATION.cff to fill the metadata for the tools
 #' This uses the created index.md file
 #'
-update_citation_metadata <- function(citation_file, output_file) {
+update_citation_metadata <- function(citation_file, output_file, doi_mapping = NULL) {
 
   investigate_file_or_directory(output_file)
 
+  # Initialize variables
+  citation_yaml <- NULL
+  url_field <- NULL
+  url <- "https://kodaqs-toolbox.gesis.org/"  # default fallback
+
   # Check if the CITATION.cff file exists
-  if (!file.exists(citation_file)) {
-    message("CITATION.cff file not found. No changes made to the output file.")
+  if (file.exists(citation_file)) {
+    # Parse the CITATION.cff file
+    citation_yaml <- yaml::read_yaml(citation_file)
+    if (!is.null(citation_yaml$identifiers)) {
+      url_field <- citation_yaml$identifiers[[1]]$value
+    }
+    url <- ifelse(!is.null(url_field), url_field, "https://kodaqs-toolbox.gesis.org/")
+  }
+
+  # Find matching DOI from doi_mapping
+  matching_doi <- NULL
+  if (!is.null(doi_mapping)) {
+    # Parse the output file to get GitHub URL
+    output_yaml <- rmarkdown::yaml_front_matter(output_file)
+    
+    # Get repo URL from github_https, or try to construct from parts
+    repo_url <- output_yaml$github_https
+    if (is.null(repo_url) && !is.null(output_yaml$github_user_name) && !is.null(output_yaml$github_repository_name)) {
+      repo_url <- paste0("https://github.com/", output_yaml$github_user_name, "/", output_yaml$github_repository_name)
+    }
+    
+    if (!is.null(repo_url)) {
+      # finding doi
+      matching_doi <- doi_mapping[[repo_url]]
+
+      if (is.null(matching_doi)) {
+        repo_url_no_git <- gsub("\\.git$", "", repo_url)
+        repo_url_with_git <- paste0(gsub("\\.git$", "", repo_url), ".git")
+        matching_doi <- doi_mapping[[repo_url_no_git]]
+        if (is.null(matching_doi)) {
+          matching_doi <- doi_mapping[[repo_url_with_git]]
+        }
+      }
+      
+      # partial matching the doi
+      if (is.null(matching_doi)) {
+        for (url in names(doi_mapping)) {
+          clean_url <- gsub("\\.git$", "", url)
+          clean_repo <- gsub("\\.git$", "", repo_url)
+          if (grepl(basename(clean_repo), clean_url) || grepl(basename(clean_url), clean_repo)) {
+            matching_doi <- doi_mapping[[url]]
+            break
+          }
+        }
+      }
+    }
+  }
+
+  
+  if (!file.exists(citation_file) && is.null(matching_doi)) {
+    message("No CITATION.cff file found. No changes made to the output file.")
     return()
   }
 
-  # Parse the CITATION.cff file
-  citation_yaml <- yaml::read_yaml(citation_file)
-
-  # Extract the URL from CITATION.cff or use a default value
-  url_field <- NULL
-  if (!is.null(citation_yaml$identifiers)) {
-    url_field <- citation_yaml$identifiers[[1]]$value
-  }
-  url <- ifelse(!is.null(url_field), url_field, "https://kodaqs-toolbox.gesis.org/")
-
-  # Generate the desired citation metadata
-  citation_metadata <- list(
-    citation = list(
+  # Only create citation metadata if citation file exists
+  if (file.exists(citation_file)) {
+    citation_list <- list(
       type = "document",
-      title = citation_yaml$title,
+      title = if (!is.null(citation_yaml$title) && citation_yaml$title != "") citation_yaml$title else "Untitled",
       author = lapply(citation_yaml$authors, function(author) {
         if (!is.null(author$name)) {
           # Handle the case where the author has a single "name" field
@@ -267,34 +331,55 @@ update_citation_metadata <- function(citation_file, output_file) {
       publisher = "GESIS – Leibniz Institute for the Social Sciences",
       URL = if (!is.null(citation_yaml$url)) citation_yaml$url else url  # Use URL from citation.cff or fallback to the url variable
     )
-  )
+    citation_metadata <- list(citation = citation_list)
 
-  # Parse YAML metadata from the output file
-  output_yaml <- rmarkdown::yaml_front_matter(output_file)
+    # Parse YAML metadata from the output file
+    output_yaml <- rmarkdown::yaml_front_matter(output_file)
 
-  # Merge output metadata with the new citation metadata
-  merged_yaml <- modifyList(output_yaml, citation_metadata)
+    # Merge output metadata with the new citation metadata
+    merged_yaml <- modifyList(output_yaml, citation_metadata)
 
-  # Convert the merged YAML back to string format
-  yaml_str <- yaml::as.yaml(merged_yaml)
+    # Convert the merged YAML back to string format
+    yaml_str <- yaml::as.yaml(merged_yaml)
 
-  # Read the entire content of the output file
-  output_content <- readLines(output_file)
+    # Read the entire content of the output file
+    output_content <- readLines(output_file)
 
-  # Locate the YAML front matter delimiters
-  yaml_start <- which(output_content == "---")[1]
-  yaml_end <- which(output_content == "---")[2]
+    # Locate the YAML front matter delimiters
+    yaml_start <- which(output_content == "---")[1]
+    yaml_end <- which(output_content == "---")[2]
 
-  # Extract the body content
-  body_content <- if (!is.na(yaml_end)) output_content[(yaml_end + 1):length(output_content)] else output_content
+    # Extract the body content
+    body_content <- if (!is.na(yaml_end)) output_content[(yaml_end + 1):length(output_content)] else output_content
 
-  # Combine the cleaned YAML metadata and the body content
-  full_content <- c("---", yaml_str, "---", body_content)
+    # Combine the cleaned YAML metadata and the body content
+    full_content <- c("---", yaml_str, "---", body_content)
+  } else {
+    # No citation file, just read the existing content without adding citation metadata
+    output_content <- readLines(output_file)
+    full_content <- output_content
+  }
+
+
+  # Add DOI section
+  if (!is.null(matching_doi)) {
+    doi_section <- c(
+      "",
+      "## DOI {.appendix .doi-section}",
+      "",
+      paste0('<div class="csl-entry quarto-appendix-citeas doi-appendix-last">'),
+      paste0("[", matching_doi, "](", matching_doi, ")"),
+      "</div>"
+    )
+    full_content <- c(full_content, doi_section)
+  }
 
   # Write the final content back to the output file
-  writeLines(full_content, output_file)
+  if (!is.null(matching_doi) || file.exists(citation_file)) {
+    writeLines(full_content, output_file)
 
-  message("Citation metadata updated and saved to ", output_file)
+    message("Citation metadata updated and saved to ", output_file)
+  }
 }
 
 
