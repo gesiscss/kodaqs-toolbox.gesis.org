@@ -18,11 +18,13 @@
     "content_set": [
       {
         "web_address": "https://github.com/juliandehne/delab-trees",
-        "filename": "index.ipynb"
+        "filename": "index.ipynb",
+        "doi": "https://doi.org/10.71627/delabtrees"
       },
       {
         "web_address": "https://github.com/BjoernRohr/KODAQS-Toolbox-SampcompR",
-        "filename": "Tool_SampcompR.qmd"
+        "filename": "Tool_SampcompR.qmd",
+        "doi": "https://doi.org/10.71627/sampcompr"
       }
     ]
   },
@@ -36,35 +38,43 @@
     "content_set": [
       {
         "web_address": "https://github.com/lukasbirki/tool_valitext.git",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/valitext"
       },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/scalearch"
       },
       {
         "web_address": "https://github.com/kraemefe/resquin-tool-application",
-        "filename": "Resquin_Tool.qmd"
+        "filename": "Resquin_Tool.qmd",
+        "doi": "https://doi.org/10.71627/resquin"
       },
       {
         "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/textprep"
       },
       {
         "web_address": "https://github.com/StefanJuenger/zipmatching",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/areamatch"
       },
       {
         "web_address": "https://github.com/lukasbirki/tool_sqp",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/sqp"
       },
       {
         "web_address": "https://github.com/frohleon/tesd_tool",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/tes-d"
       },
       {
         "web_address": "https://github.com/gesiscss/tubecleanr_tool",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "#To_be_added"
       }
     ]
   },
@@ -87,19 +97,23 @@
     "content_set": [
       {
         "web_address": "https://github.com/kraemefe/resquin-tool-application",
-        "filename": "Resquin_Tool.qmd"
+        "filename": "Resquin_Tool.qmd",
+        "doi": "https://doi.org/10.71627/resquin"
       },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/scalearch"
       },
       {
         "web_address": "https://github.com/lukasbirki/tool_sqp",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/sqp"
       },
       {
         "web_address": "https://github.com/BjoernRohr/KODAQS-Toolbox-SampcompR",
-        "filename": "Tool_SampcompR.qmd"
+        "filename": "Tool_SampcompR.qmd",
+        "doi": "https://doi.org/10.71627/sampcompr"
       }
     ]
   },
@@ -113,7 +127,8 @@
     "content_set": [
       {
         "web_address": "https://github.com/StefanJuenger/zipmatching",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/areamatch"
       }
     ]
   },
@@ -127,23 +142,28 @@
     "content_set": [
       {
         "web_address": "https://github.com/lukasbirki/tool_valitext.git",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/valitext"
       },
       {
         "web_address": "https://github.com/juliandehne/delab-trees",
-        "filename": "index.ipynb"
+        "filename": "index.ipynb",
+        "doi": "https://doi.org/10.71627/delabtrees"
       },
       {
         "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/textprep"
       },
       {
         "web_address": "https://github.com/frohleon/tesd_tool",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/tes-d"
       },
       {
         "web_address": "https://github.com/gesiscss/tubecleanr_tool",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "#To_be_added"
       }
     ]
   }

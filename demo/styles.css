@@ -57,3 +57,14 @@ h3.method_title_gallery:hover::after {
 embed.img-fluid {
     height: 800px;
 }
+
+/* DOI Appendix Ordering*/
+#quarto-appendix {
+    display: flex;
+    flex-direction: column;
+}
+/* DOI section should be last */
+#quarto-appendix .doi-section {
+    order: 3 !important;
+}
+
