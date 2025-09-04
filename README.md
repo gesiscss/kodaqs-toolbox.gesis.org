@@ -1,4 +1,4 @@
-# kodaqs-toolbox.gesis.org <img src="img/logo.png" align="right" />
+# kodaqs-toolbox.gesis.org <img src="img/logo.jpg" align="right" />
 
 This repository contains the code for building the KODAQS Data Quality Toolbox website [kodaqs-toolbox.gesis.org](https://kodaqs-toolbox.gesis.org).
 
@@ -92,8 +92,6 @@ Edit the entries in the following files for customized tools:
 - [`matplotlib` Examples](https://matplotlib.org/stable/gallery/index.html)
 
 ## Contributing
-
-We are inviting contributions to enhance learning resources and tools focused on data quality. More details can be found in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 
 To contribute to this repository, please fork the repository and create a pull request with your changes. We welcome contributions that improve the code, documentation, or add new features.
 
