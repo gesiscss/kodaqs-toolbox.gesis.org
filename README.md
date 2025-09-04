@@ -1,96 +1,102 @@
-# andrew <img src="man/figures/logo.png" align="right" />
+# kodaqs-toolbox.gesis.org <img src="img/logo.png" align="right" />
 
-`andrew` (Aggregator for Navigatable Discoverable Reproducible and Educational work) is designed to speed up the creation of a **static** website with pages from a collection of tutorials or vignette of **transparent analytic** computational methods. This is inspired by the feed aggregator Planet. Tutorials and vignette **must** be reproducible and, to enforce it, `andrew` executes the calculations presents in [Jupyter Notebooks](https://nbformat.readthedocs.io/) and [R Markdown](https://rmarkdown.rstudio.com/) files in an [container](https://en.wikipedia.org/wiki/OS-level_virtualization).
+This repository contains the code for building the KODAQS Data Quality Toolbox website [kodaqs-toolbox.gesis.org](https://kodaqs-toolbox.gesis.org).
 
-The curation of tutorials or vignette that is included in the **static** website can be done using a [sibling project](https://github.com/GESIS-Methods-Hub/andrew-django-admin) or manually editting the CSV files.
+Based on the R package [`andrew`](https://github.com/GESIS-Methods-Hub/andrew) (Aggregator for Navigatable Discoverable Reproducible and Educational work), reusable tools in the form of literate programming documents such as [R Markdown](https://rmarkdown.rstudio.com/), [Quarto Documents](https://quarto.org/docs/get-started/hello/rstudio.html), and [Jupyter Notebooks](https://nbformat.readthedocs.io/) are collected from different repositories, reproduced in [containers](https://en.wikipedia.org/wiki/OS-level_virtualization), and compiled into a single static website.
+In our KODAQS Toolbox, we focus on tools and resources related to data quality. However, the approach is generic and can be applied to other domains as well.
 
-![Workflow diagram ilustrating how andrew works.](img/workflow.drawio.png)
+Below is the workflow of the building process.
 
-The collection is organised in two levels.
+![Workflow](img/workflow.png)
 
-![Screenshot of demo showing the content of the "root".](img/andrew-root.png)
-
-![Screenshot of demo showing the content of a 1st level collection.](img/andrew-1st-level.png)
-
-![Screenshot of demo showing the content of of a 2nd level collection.](img/andrew-2nd-level.png)
-
-![Screenshot of demo showing one document in the collection.](img/andrew-content.png)
 
 ## Dependencies
 
 - [Docker](https://www.docker.com/)
-  - a) add andrew as a docker user so it does not need superuser privilege
-  - b) alternatively: install rootless docker
 - Quarto >= 1.3
-- R == 4.2.3 (for remote Intellij development)
-- Python
-  - [repo2docker](https://repo2docker.readthedocs.io/)
-
-
+- Dependencies specified in [`env.yaml`](./env.yaml)
 
 ### Dependencies installation
 
-We recommend use [`mamba`](https://mamba.readthedocs.io/) to install the dependencies. A step by step is available at [the Contribution Guide](./CONTRIBUTING.md).
+For Docker, follow the steps in [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/).
+Note that Docker must be configured to be able to run without superuser privileges.
+You can achieve this by either:
 
-## Install `andrew`
+- rootless Docker installation (https://docs.docker.com/engine/security/rootless/)
+- or: add your user to the `docker` group (https://docs.docker.com/engine/install/linux-postinstall/)
+
+For Quarto, download the latest release from https://github.com/quarto-dev/quarto-cli/releases.
+
+Except for Docker and Quarto, all the dependencies can be installed with `mamba` or `conda`.
+Install `micromamba` following the [Mamba Documentation](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html) and create the environment specified in `env.yaml`:
 
 ```bash
-Rscript -e "devtools::install('GESIS-Methods-Hub/andrew')"
+micromamba create -y -n andrew -f env.yaml
 ```
 
-## How to Build the Demo Website
+
+## How to build the website
+
+Make sure the environment `andrew` is activated, for example:
 
 ```bash
-Rscript -e "andrew::main(source_dir='demo')"
+micromamba activate andrew
 ```
 
-## Similar Projects
+To build the KODAQS Toolbox website as a demo, run the following command in the root directory of the repository:
+
+```bash
+Rscript start.R
+```
+
+Then, render the website with Quarto:
+
+```bash
+./render.sh
+```
+
+The static website will be generated in the `demo/_site/` folder.
+
+## Developer notes
+
+The file `main.R` is the entrypoint for the pipeline. It consists of the following steps:
+
+- downloading (cloning the repositories) in `download_contributions.R`. They will be stored in the repository names without underscore.
+- compiling the contributions to markdown and removing all dynamic elements (should be static md afterwards). This is done in `render_contributions.R`.
+  1. create a docker container depending on the needs (python, R, etc.)
+  2. run compilation scripts in the container (`inst/docker-scripts`) to map the different repository types and entry points
+  3. copy/using valumes to move the resulting static markdown to the repositories with underscore.
+- automatically create a quarto structure for composing the different repositories into one website
+
+### Using a minimal example for debugging
+
+In the directory `minimal_example/` there is a pipeline to build only one tool to test the process. It does not fulfill all the requirements of the main pipeline but it is a faster way of testing new tool integration.
+The corresponding scripts are `start_minimal.R` and `render_minimal.sh`.
+
+## Deployment
+
+- `deploy.sh` deploys the rendered website to `/var/www/html/`. (NOTE: all content in `/var/www/html/` will be deleted before deployment!)
+
+## Customization
+
+Edit the entries in the following files for customized tools:
+
+  - `content-contributions.json` (with the git tag for fixed version)
+  - `tags.json` (to generated link page)
+  - `zettelkasten.json` (for the hierarchy generation)
+
+## Similar projects
 
 - [R Universe](https://r-universe.dev)
 - [Gallery of Jupyter Books](https://executablebooks.org/en/latest/gallery/)
 - [`matplotlib` Examples](https://matplotlib.org/stable/gallery/index.html)
 
-## Developer Notes
+## Contributing
 
-The file main.R is the entrypoint for the pipeline. It consist of the following steps:
+We are inviting contributions to enhance learning resources and tools focused on data quality. More details can be found in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 
-- downloading (cloning the repositories) in download_contributions.R. They will be stored in the repository names without underscore.
-- compiling the contributions to markdown and removing all dynamic elements (should be static md afterwards). This is done in render_contributions.
-  1. create a docker container depending on the needs (python R etc.)
-  2. run compilation scripts in the container (inst/dockerscripts) to map the different repository types and entry points
-  3. copy/using valumes to move the resulting static markdown to the repositories with underscore.
-- automatically create a quarto structure for composing the different repositories into one website
+To contribute to this repository, please fork the repository and create a pull request with your changes. We welcome contributions that improve the code, documentation, or add new features.
 
-### Using start.R or start_minimal.R for Debugging
+## About KODAQS
 
-Both `start.R` and `start_minimal.R` assume that the conda / mamba environment for `andrew` is activated, for example:
-
-```bash
-mamba activate env_name
-```
-
-or for a single command:
-
-```bash
-mamba run -n env_name Rscript start.R
-```
-
-Both scripts need to be run from the root directory of the repository.
-
-### Using start_minimal.R for Running the minimal example
-
-In the directory minimal_example there is a pipeline to build only one tool to test the process. It does not fulfill all the requirements
-of the main pipeline but it is a faster way of testing new tool integration.
-
-## Deployment
-
-- deploy.sh deploys andrew to the local webserver
-- deploy_minimal.sh deploys the minimal example to the webserver
-
-## New Tools / Updated Tools
-
-- add the entry for the new tool in the following files:
-  - content-contributions.json (with the git tag for fixed version)
-  - tags.json (to generated link page)
-  - zettelkasten.json (for the hierarchy generation)
-
+The **Competence Center Data Quality in the Social Sciences (KODAQS)**, a partnership between **GESIS**, the **University of Mannheim**, and **LMU Munich**, offers demand-oriented support for the evaluation and analysis of the quality of social science data. Learn more about the KODAQS project [here](https://www.gesis.org/en/research/external-funding-projects/kodaqs-project-page).

@@ -1,91 +1,54 @@
-# Contributing Guide
+# Call for Contributions: Data Quality Tools
 
-## Getting Started
+We are inviting contributions to enhance learning resources and tools focused on data quality. Our goal is to gather, curate, and share scripts, metrics, and other relevant tools that are currently lying around in your projects, waiting to be made available to a broader audience.
 
-```bash
-git clone git@github.com:GESIS-Methods-Hub/andrew.git
-```
+## Contribution Process
 
-## Source Code
+We have a simple 3-step process to guide you through the contribution process. Follow the steps below to get started.
 
-The project is structured as a [R package](https://r-pkgs.org/). Check the `R` directory for the R scripts.
+### Step 1: Identify Your Project
 
-## How-to
+Identify any scripts, metrics, or other learning resources that are related to data quality but have not been published yet. This could be:
 
-### Change `*.drawio.png` images
+- Tools or scripts lying around in your projects that need publishing
+- Data quality resources or libraries that need better marketing
+- Method you would like to share within GESIS and beyond
+- You should reflect whether you are willing to make the project public and open source!
 
-[draw.io](https://www.drawio.com/) is a open source diagramming software. You can use it online at https://app.diagrams.net/ and download from https://get.diagrams.net/ the desktop version. **All** `*.drawio.png` images include a copy of the diagram that draw.io can use to facilitate changes.
+Consider any projects where these resources could help others enhance their understanding or application of data quality metrics.
 
-### Install dependencies with `micromamba`
+### Step 2: Contact Us
 
-Except for Docker and Quarto, all the dependencies can be installed with `mamba`. For Docker, follow the steps in https://docs.docker.com/engine/install/ and, for Quarto, download the latest release from https://github.com/quarto-dev/quarto-cli/releases.
+Once you have identified your project, reach out to a contact at GESIS to determine if your project can be supported by the **KODAQS Toolbox**.
 
-Install `micromamba` following the [Mamba Documentation](https://mamba.readthedocs.io/en/latest/installation.html#automatic-installation) and run
+- Contact: Fabienne Krämer
+- Email: fabienne.kraemer@gesis.org
+- Phone: +49(621)1246-580
 
-```bash
-micromamba create -y -n andrew -f env.yaml
-```
+The GESIS team will provide information on how your project can benefit from the visibility of the KODAQS Toolbox.
 
-### Run tests
+### Step 3: Set Up Your Repository
 
-```r
-devtools::load_all()
-```
+After receiving confirmation from GESIS, it's time to set up a GitHub repository based on one of the following example templates:
 
-```r
-devtools::test()
-```
+- [Quarto File](https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units) (recommended): the newer version of R-Markdown can be used easily with renaming your `.rmd` to `.qmd`
+  - entrypoint file should be called `index.qmd`
+  - `install.R` (add your `install.packages("package")`) code here
+  - `runtime.txt` (add your R-version here, i.e. `r-4.3.1-2023-06-16`)
+  - add this [file](https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units/blob/main/postBuild) for some technical reasons you don't want to know. Don't have Windows add `.txt` to it!
+  - add author, image and image-alt fields to your [quarto metadata](https://quarto.org/docs/authoring/front-matter.html)
+- [Jupyter Notebooks](https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python-gpt2): you have some practical code that you want to publish on GESIS binder for hands-on work?
+- [Many More Input Templates](https://github.com/GESIS-Methods-Hub): have a look at GESIS Methods-Hub templates for what is possible
 
-### Run package entrypoint
+Customize the repository as needed, adding your tools, scripts, or resources using our [guidelines](https://github.com/GESIS-Methods-Hub/method-guidelines/blob/main/tutorial-template.md). Once the repository is ready:
 
-```r
-devtools::load_all()
-```
+- Email **fabienne.kraemer@gesis.org** with the subject line: "Repository Ready for Integration"
+- Include the link to your GitHub repository in the email.
 
-```r
-andrew::main(source_dir="demo")
-```
+The KODAQs team will take care of the rest, ensuring your contribution is integrated into the Toolbox.
 
-### Run package entrypoint with debug message
 
-```r
-devtools::load_all()
-```
+## Ready to Contribute?
 
-```r
- logger::log_threshold(logger::DEBUG)
- ```
+If you’re ready to contribute or need more information, feel free to reach out to the contact information provided in Step 2. We look forward to collaborating with you to enhance data quality learning resources!
 
-```r
-andrew::main(source_dir="demo")
-```
-
-### Add new third package dependency
-
-```r
-usethis::use_package("new-third-package-name")
-```
-
-### Add new R script
-
-```r
-usethis::use_r("new-script")
-```
-
-### Add new test
-
-```r
-usethis::use_test("new-test")
-```
-
-### Skip inclusion of file in built R package
-
-```r
-usethis::use_build_ignore("file-to-ignore")
-```
-
-## Style R files
-
-```r
-styler::style_dir("R")
-```
