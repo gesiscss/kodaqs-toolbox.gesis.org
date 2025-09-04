@@ -74,4 +74,4 @@ format:
     comments:
       giscus:
         repo: GESIS-Methods-Hub/andrew
-    # include-after-body: _partials/kodaqs_footer.html
+    include-after-body: _partials/kodaqs_footer.html
