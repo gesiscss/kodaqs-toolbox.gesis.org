@@ -255,6 +255,20 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
   citation_yaml <- NULL
   url_field <- NULL
   url <- "https://kodaqs-toolbox.gesis.org/"  # default fallback
+  
+  citation_dir <- dirname(citation_file)
+  # exact case-sensitive match for CITATION.cff
+  if (!file.exists(citation_file) && dir.exists(citation_dir)) {
+    # case-insensitive search for citation.cff variations
+    all_files <- list.files(citation_dir, full.names = TRUE)
+    for (file_path in all_files) {
+      filename <- basename(file_path)
+      if (tolower(filename) == "citation.cff") {
+        citation_file <- file_path
+        break
+      }
+    }
+  }
 
   # Check if the CITATION.cff file exists
   if (file.exists(citation_file)) {
