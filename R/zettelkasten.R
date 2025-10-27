@@ -280,7 +280,7 @@ create_listing_1st_level <- function(subset_data, key) {
         list(
           title = sublevel,
           subtitle = subtitle,
-          href = sublevel_slang,
+          href = paste0("/", sublevel_path),
           cover_image = paste0("../../", cover_image_local)
         )
       )
