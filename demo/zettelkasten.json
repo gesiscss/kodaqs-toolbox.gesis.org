@@ -74,7 +74,7 @@
       {
         "web_address": "https://github.com/gesiscss/tubecleanr_tool",
         "filename": "index.qmd",
-        "doi": "#To_be_added"
+        "doi": "https://doi.org/10.71627/tubecleanR"
       }
     ]
   },
@@ -83,7 +83,7 @@
     "parent_collection": null,
     "title": "Data Types",
     "subtitle": "Distinct types of social science data",
-    "abstract": "In social science research, data capture essential information about behaviors, attitudes, and demographics, providing the basis for analyzing social patterns and relationships. The different data types — whether self-reported, observed, or combined from multiple sources —enable a comprehensive understanding of complex social dynamics and support a wide range of research questions. ",
+    "abstract": "In social science research, data capture essential information about behaviors, attitudes, and demographics, providing the basis for analyzing social patterns and relationships. The different data types—whether self-reported, observed, or combined from multiple sources—enable a comprehensive understanding of complex social dynamics and support a wide range of research questions. ",
     "cover_image": "static/AdobeStock_317474769_Editorial_Use_Only.jpeg",
     "content_set": []
   },
