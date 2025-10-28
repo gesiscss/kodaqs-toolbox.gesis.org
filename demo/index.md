@@ -2,12 +2,12 @@
 page-title: "KODAQS Toolbox"
 title-block-banner: false
 listing:
-  - id: data-types-listing
-    template: gallery/ejs/tiles.ejs
-    contents: gallery/data-types/listing-contents-data-types.yml
   - id: error-sources-listing
     template: gallery/ejs/tiles.ejs
     contents: gallery/error-sources/listing-contents-error-sources.yml
+  - id: data-types-listing
+    template: gallery/ejs/tiles.ejs
+    contents: gallery/data-types/listing-contents-data-types.yml
 comments: false
 tags: ["markdown", "home", "andrew"]
 ---
@@ -86,19 +86,19 @@ tags: ["markdown", "home", "andrew"]
 
 The **KODAQS Data Quality Toolbox** is an educational resource from the _Competence Center for Data Quality (KODAQS)_, aimed at assisting researchers in developing skills for data quality assessment. It provides tutorials and practical coding examples of key quality indicators to evaluate data across various types—survey, digital behavioral, and linked data—focusing on improving validity and ensuring unbiased research outcomes. Whether handling survey data, digital behavioral data, or linked data, the KODAQS Toolbox guides users in data quality assessments tailored to diverse research interests.
 
-Tools are categorized by **Error Source** or **Data Type**.
-
-<h1>Error Sources</h1>
-
-In social science data, error sources can impact the reliability and validity of research findings. Biases and inaccuracies—whether in data collection, measurement, sampling—can distort insights and reduce generalizability. Addressing these errors is essential to maintain the integrity of data analysis and ensure meaningful interpretations of social behaviors and trends
-
-:::{#error-sources-listing}
-:::
+Tools are categorized by **Data Type** or **Error Source**.
 
 <h1>Data Types</h1>
 
 In social science research, data capture essential information about behaviors, attitudes, and demographics, providing the basis for analyzing social patterns and relationships. The different data types—whether self-reported, observed, or combined from multiple sources—enable a comprehensive understanding of complex social dynamics and support a wide range of research questions.
 
 :::{#data-types-listing}
+:::
+
+<h1>Error Sources</h1>
+
+In social science data, error sources can impact the reliability and validity of research findings. Biases and inaccuracies—whether in data collection, measurement, sampling—can distort insights and reduce generalizability. Addressing these errors is essential to maintain the integrity of data analysis and ensure meaningful interpretations of social behaviors and trends
+
+:::{#error-sources-listing}
 :::
 
