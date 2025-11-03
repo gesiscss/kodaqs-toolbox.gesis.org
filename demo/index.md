@@ -33,6 +33,9 @@ tags: ["markdown", "home", "andrew"]
   .white p{
     color: black;
   }
+  @media (max-width: 768px) {
+    .image-container { height: 250px; }
+  }
 </style>
 
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">

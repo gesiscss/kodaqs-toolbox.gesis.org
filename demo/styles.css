@@ -34,6 +34,25 @@ DOCX custom styles are annotated into data-custom-style.
     margin-bottom: 20px;
 }
 
+/* Mobile fixes */
+@media (max-width: 768px) {
+    .image-container { height: 250px !important; }
+    .methods_hub_nav_teaser { margin-bottom: 15px; }
+    .quarto-listing-gallery .listing-item { margin-bottom: 10px; }
+    .g-col-4 { 
+        width: 100% !important; 
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+    .grid { 
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .tile {
+        margin-bottom: 20px !important;
+    }
+}
+
 /* Truncate method titles in the gallery */
 h3.method_title_gallery {
     text-overflow: ellipsis;
@@ -68,3 +87,16 @@ embed.img-fluid {
     order: 3 !important;
 }
 
+@media (max-width: 768px) {
+    h1 {
+        margin-top: 50px !important;
+        margin-bottom: 30px !important;
+        padding-top: 20px !important;
+    }
+    
+    #data-types-listing,
+    #error-sources-listing {
+        margin-top: 40px !important;
+        padding-top: 20px !important;
+    }
+}
