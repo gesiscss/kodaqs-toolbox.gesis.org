@@ -87,16 +87,3 @@ embed.img-fluid {
     order: 3 !important;
 }
 
-@media (max-width: 768px) {
-    h1 {
-        margin-top: 50px !important;
-        margin-bottom: 30px !important;
-        padding-top: 20px !important;
-    }
-    
-    #data-types-listing,
-    #error-sources-listing {
-        margin-top: 40px !important;
-        padding-top: 20px !important;
-    }
-}
