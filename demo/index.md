@@ -88,14 +88,14 @@ The **KODAQS Data Quality Toolbox** is an educational resource from the _Compete
 
 Tools are categorized by **Data Type** or **Error Source**.
 
-<h1>Find by Data Type</h1>
+<h2>Find by Data Type</h2>
 
 In social science research, data capture essential information about behaviors, attitudes, and demographics, providing the basis for analyzing social patterns and relationships. The different data types—whether self-reported, observed, or combined from multiple sources—enable a comprehensive understanding of complex social dynamics and support a wide range of research questions.
 
 :::{#data-types-listing}
 :::
 
-<h1>Find by Error Source</h1>
+<h2>Find by Error Source</h2>
 
 In social science data, error sources can impact the reliability and validity of research findings. Biases and inaccuracies—whether in data collection, measurement, sampling—can distort insights and reduce generalizability. Addressing these errors is essential to maintain the integrity of data analysis and ensure meaningful interpretations of social behaviors and trends
 
