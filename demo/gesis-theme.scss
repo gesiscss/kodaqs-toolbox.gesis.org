@@ -129,15 +129,15 @@ $gs--gradient--testimonial: linear-gradient(17.23deg, #0095DB 0%, #004388 52%, #
 /*-------------------*/
 /*--     navbar    --*/
 /*-------------------*/
-$navbar-color: $gs--color--gs-white !default; 
-$navbar-bg: $gs--color--gs-white !default; 
+$navbar-color: $gs--color--gs-white !default;
+$navbar-bg: $gs--color--gs-white !default;
 $navbar-fg: $gs--color--gs-pink;
-$navbar-border-color: $gs--color--gs-light; 
+$navbar-border-color: $gs--color--gs-light;
 
 /*-------------------*/
 /*--     body      --*/
 /*-------------------*/
-$body-color: $gs--color--gs-dark; 
+$body-color: $gs--color--gs-dark;
 
 /*-------------------*/
 /*--     fonts     --*/
@@ -148,19 +148,19 @@ $font-heading: 'Cabin', sans-serif;
 /*-------------------*/
 /*--     links     --*/
 /*-------------------*/
-$link-color: $body-color; 
-$link-decoration: none; 
-$link-hover-decoration: none; 
+$link-color: $body-color;
+$link-decoration: none;
+$link-hover-decoration: none;
 
 /*-------------------*/
 /*--   headings    --*/
 /*-------------------*/
 $gs--headline--color: $gs--color--gs-lightblue;
-$h1-font-size: 3.1rem; 
-$h2-font-size: 2.1rem; 
-$h3-font-size: 1.5rem; 
+$h1-font-size: 2.5rem;
+$h2-font-size: 2.1rem;
+$h3-font-size: 1.5rem;
 $h4-font-size: 1rem;
-$h5-font-size: 1rem; 
+$h5-font-size: 1rem;
 
 /*-------------------*/
 /*--     others    --*/
@@ -174,7 +174,7 @@ body {
     font-size: 1.1rem;
 }
 
-// navbar 
+// navbar
 .navbar-logo {
     max-height: 4rem;
 }
@@ -252,7 +252,7 @@ nav#TOC {
         li {
             a {
                 display: block;
-                border-top: 1px solid $gs--color--gs-darkblue; 
+                border-top: 1px solid $gs--color--gs-darkblue;
                 padding: 0.3em 0.2em;
                 display: flex;
                 align-items: baseline;
@@ -268,7 +268,7 @@ nav#TOC {
                 }
 
                 &:hover {
-                    background-color: $gs--color--gs-light; 
+                    background-color: $gs--color--gs-light;
                 }
             }
         }
@@ -421,17 +421,17 @@ footer{
     border-top: 10px solid $gs--color--gs-pink;
 }
 .nav-footer {
-    background-color: $gs--color--gs-darkblue; 
-    color: $gs--color--gs-white; 
+    background-color: $gs--color--gs-darkblue;
+    color: $gs--color--gs-white;
     margin-left: 6rem;
     margin-right: 4rem;
     a {
-        color: inherit; 
+        color: inherit;
         text-decoration: underline;
         box-shadow: none;
 
         &:hover {
-            color: $gs--color--gs-white; 
+            color: $gs--color--gs-white;
             box-shadow: inset 0 -8px 0 rgba(255,255,255, .5);
         }
     }
@@ -439,11 +439,11 @@ footer{
     p,
     span {
         margin: 0;
-        color: inherit; 
+        color: inherit;
     }
 
     &-center{
-      text-align: left;  
+      text-align: left;
     }
 
     &-right {
