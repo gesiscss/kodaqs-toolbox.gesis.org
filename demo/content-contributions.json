@@ -2,12 +2,14 @@
   {
     "web_address": "https://github.com/kraemefe/resquin-tool-application",
     "filename": "Resquin_Tool.qmd",
-    "version": "updates"
+    "version": "updates",
+    "self_assessment": "https://forms.gle/9YbifnpjmEF4fWMW7"
   },
   {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
     "filename": "index.qmd",
-    "version": "v1.0"
+    "version": "v1.0",
+    "self_assessment": "https://forms.gle/V3hpnjGZVFfu1jRu6"
   },
   {
     "web_address": "https://github.com/juliandehne/delab-trees",

@@ -32,7 +32,7 @@ create_output_directory <- function(output_location) {
   }
 }
 
-render_single_contribution <- function(contribution_row, is_docker_rootless = FALSE, doi_mapping = NULL) {
+render_single_contribution <- function(contribution_row, is_docker_rootless = FALSE, doi_mapping = NULL, self_assessment_mapping = NULL) {
   logger::log_debug("Rendering {contribution_row['filename']} from {contribution_row['web_address']}")
 
   if (is_docker_rootless) {
@@ -171,7 +171,7 @@ render_single_contribution <- function(contribution_row, is_docker_rootless = FA
   # add the citation.cff data if available
   index_md <- file.path(output_location, file2render_basename, "index.md")
   citation_cff <- file.path(output_location, file2render_basename, "CITATION.cff")
-  update_citation_metadata(citation_file = citation_cff, output_file = index_md, doi_mapping = doi_mapping)
+  update_citation_metadata(citation_file = citation_cff, output_file = index_md, doi_mapping = doi_mapping, self_assessment_mapping = self_assessment_mapping)
   
   if (sum_docker_return_value == 0) {
     build_status <- "Built"
@@ -236,9 +236,20 @@ render_contributions <- function(all_contributions, is_docker_rootless = FALSE) 
     }
   }
   
+  # Extract self-assessment links
+  content_contributions_path <- file.path(dirname(current_dir), "demo", "content-contributions.json")
+  self_assessment_mapping <- list()
+  contributions_data <- jsonlite::read_json(content_contributions_path)
+  for (contribution in contributions_data) {
+    if (!is.null(contribution$self_assessment)) {
+      web_addr <- gsub("\\.git$", "", contribution$web_address)
+      self_assessment_mapping[[web_addr]] <- contribution$self_assessment
+    }
+  }
+  
   all_contributions$status <- all_contributions |>
     apply(1, function(contribution_row) {
-      render_single_contribution(contribution_row, is_docker_rootless, doi_mapping)
+      render_single_contribution(contribution_row, is_docker_rootless, doi_mapping, self_assessment_mapping)
     })
 
   return(all_contributions)
@@ -247,7 +258,7 @@ render_contributions <- function(all_contributions, is_docker_rootless = FALSE) 
 #' Use CITATION.cff to fill the metadata for the tools
 #' This uses the created index.md file
 #'
-update_citation_metadata <- function(citation_file, output_file, doi_mapping = NULL) {
+update_citation_metadata <- function(citation_file, output_file, doi_mapping = NULL, self_assessment_mapping = NULL) {
 
   investigate_file_or_directory(output_file)
 
@@ -319,6 +330,19 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
     }
   }
 
+  # Find matching self-assessment
+  matching_self_assessment <- NULL
+  if (!is.null(self_assessment_mapping)) {
+    # Check the output file to get the URL
+    output_yaml <- rmarkdown::yaml_front_matter(output_file)
+    repo_url <- output_yaml$github_https
+    if (is.null(repo_url)) {
+      repo_url <- paste0("https://github.com/", output_yaml$github_user_name, "/", output_yaml$github_repository_name)
+    }
+    clean_repo_url <- gsub("\\.git$", "", repo_url)
+    matching_self_assessment <- self_assessment_mapping[[clean_repo_url]]
+  }
+
   
   if (!file.exists(citation_file) && is.null(matching_doi)) {
     message("No CITATION.cff file found. No changes made to the output file.")
@@ -375,6 +399,25 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
   }
 
 
+  # Add self-assessment section (only for HTML)
+  if (!is.null(matching_self_assessment)) {
+    self_assessment_section <- c(
+      "",
+      '::: {.content-visible when-format="html"}',
+      "",
+      '<section id="quiz" class="level2 appendix quiz-section">',
+      '<h2 class="anchored quarto-appendix-heading">Self-assessment Quizzes</h2>',
+      '<div class="quarto-appendix-contents">',
+      paste0('<a target="_blank" rel="noopener noreferrer" href="', matching_self_assessment, '">Click here</a>'),
+      '</div>',
+      '</section>',
+      "",
+      ':::',
+      ""
+    )
+    full_content <- c(full_content, self_assessment_section)
+  }
+
   # Add DOI section
   if (!is.null(matching_doi)) {
     doi_section <- c(
@@ -389,7 +432,7 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
   }
 
   # Write the final content back to the output file
-  if (!is.null(matching_doi) || file.exists(citation_file)) {
+  if (!is.null(matching_doi) || file.exists(citation_file) || !is.null(matching_self_assessment)) {
     writeLines(full_content, output_file)
 
     message("Citation metadata updated and saved to ", output_file)
