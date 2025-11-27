@@ -50,5 +50,10 @@
     "web_address": "https://github.com/gesiscss/tubecleanr_tool",
     "filename": "index.qmd",
     "version": "v1.0.0"
+  },
+  {
+    "web_address": "https://github.com/NadezhdaOzornina/TopLing",
+    "filename": "index.Rmd",
+    "version": "v1.0.1"
   }
 ]

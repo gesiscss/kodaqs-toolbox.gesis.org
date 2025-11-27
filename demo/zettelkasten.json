@@ -75,6 +75,11 @@
         "web_address": "https://github.com/gesiscss/tubecleanr_tool",
         "filename": "index.qmd",
         "doi": "https://doi.org/10.71627/tubecleanR"
+      },
+      {
+        "web_address": "https://github.com/NadezhdaOzornina/TopLing",
+        "filename": "index.Rmd",
+        "doi": "https://doi.org/10.71627/topling"
       }
     ]
   },
@@ -164,6 +169,11 @@
         "web_address": "https://github.com/gesiscss/tubecleanr_tool",
         "filename": "index.qmd",
         "doi": "https://doi.org/10.71627/tubecleanR"
+      },
+      {
+        "web_address": "https://github.com/NadezhdaOzornina/TopLing",
+        "filename": "index.Rmd",
+        "doi": "https://doi.org/10.71627/topling"
       }
     ]
   }

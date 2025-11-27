@@ -83,5 +83,15 @@
       "Preprocessing",
       "Data Quality"
     ]
+  },
+  {
+    "web_address": "https://github.com/NadezhdaOzornina/TopLing",
+    "filename": "index.Rmd",
+    "tags": [
+      "Topic Modeling",
+      "Multilingual Data",
+      "Automated Text Analysis",
+      "Computational Communication Science"
+    ]
   }
 ]
