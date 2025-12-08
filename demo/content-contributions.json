@@ -3,13 +3,15 @@
     "web_address": "https://github.com/kraemefe/resquin-tool-application",
     "filename": "Resquin_Tool.qmd",
     "version": "updates",
-    "self_assessment": "https://forms.gle/9YbifnpjmEF4fWMW7"
+    "self_assessment": "https://forms.gle/9YbifnpjmEF4fWMW7",
+    "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3AResquin&l=list&p=1&s=10&sort=newest"
   },
   {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
     "filename": "index.qmd",
     "version": "v1.0",
-    "self_assessment": "https://forms.gle/V3hpnjGZVFfu1jRu6"
+    "self_assessment": "https://forms.gle/V3hpnjGZVFfu1jRu6",
+    "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3AAreaMatch&l=list&p=1&s=10&sort=newest"
   },
   {
     "web_address": "https://github.com/juliandehne/delab-trees",
@@ -19,7 +21,8 @@
   {
     "web_address": "https://github.com/lukasbirki/tool_valitext",
     "filename": "index.qmd",
-    "version": "final"
+    "version": "final",
+    "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3AValiText&l=list&p=1&s=10&sort=newest"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
@@ -29,7 +32,8 @@
   {
     "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
     "filename": "index.qmd",
-    "version": "v1.0.3"
+    "version": "v1.0.3",
+    "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3ATextPrep&l=list&p=1&s=10&sort=newest"
   },
   {
     "web_address": "https://github.com/lukasbirki/tool_sqp",
