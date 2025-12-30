@@ -19,7 +19,7 @@ cd /home/mambauser/andrew/$input_dirname
 tmp_dir=$(mktemp -d)
 mv *.qmd $tmp_dir
 
-cat > _quarto.yml <<EOF
+cat > _quarto.yml <<'EOF'
 format:
   pdf:
     pdf-engine: lualatex
@@ -36,6 +36,11 @@ format:
     include-in-header:
       - text: |
           \usepackage{luatexja}
+          \usepackage{fvextra}
+          \usepackage{longtable}
+          \fvset{breaklines=true,breakanywhere=true}
+          \AtBeginEnvironment{verbatim}{\scriptsize}
+          \AtBeginEnvironment{longtable}{\tiny\setlength{\tabcolsep}{1pt}}
 EOF
 
 # cleaning up scripts and links
