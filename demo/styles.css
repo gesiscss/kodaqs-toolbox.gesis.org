@@ -101,8 +101,10 @@ embed.img-fluid {
     display: flex;
     flex-direction: column;
 }
-/* DOI section should be last */
-#quarto-appendix .doi-section {
-    order: 3 !important;
-}
 
+#quarto-appendix #quarto-bibliography { order: 0 ; }
+#quarto-appendix .custom-quiz-section { order: 1 ; }
+#quarto-appendix .custom-database-section { order: 2 ; }
+#quarto-appendix #quarto-reuse { order: 3 ; }
+#quarto-appendix #quarto-citation { order: 4 ; }
+#quarto-appendix .doi-section { order: 5 ; }
