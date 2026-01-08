@@ -59,5 +59,10 @@
     "web_address": "https://github.com/NadezhdaOzornina/TopLing",
     "filename": "index.Rmd",
     "version": "v1.0.2"
+  },
+  {
+    "web_address": "https://github.com/SiyuZ-00/DQ_Tool_SubData",
+    "filename": "index.qmd",
+    "version": "v1.0.1"
   }
 ]

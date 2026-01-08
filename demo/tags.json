@@ -93,5 +93,17 @@
       "Automated Text Analysis",
       "Computational Communication Science"
     ]
+  },
+  {
+    "web_address": "https://github.com/SiyuZ-00/DQ_Tool_SubData",
+    "filename": "index.qmd",
+    "tags": [
+      "Perspectivism",
+      "Alignment",
+      "Persona Prompting",
+      "Hate Speech Detection",
+      "NLP",
+      "Datasets"
+    ]
   }
 ]
