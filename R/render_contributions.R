@@ -385,6 +385,9 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
     # Merge output metadata with the new citation metadata
     merged_yaml <- modifyList(output_yaml, citation_metadata)
 
+    # Fix updated date field
+    merged_yaml$date <- merged_yaml$git_date
+
     # Convert the merged YAML back to string format
     yaml_str <- yaml::as.yaml(merged_yaml)
 
