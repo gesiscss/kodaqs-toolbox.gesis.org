@@ -23,6 +23,9 @@ Meet the team behind the KODAQS Toolbox, which develops, reviews, and refines th
 **Yannik Peters**
 *Content Creation - Digital Behavioral Data*
 
+**Sina Chen**
+*Content Creation - Digital Behavioral Data*
+
 :::
 
 ::: {.column width="50%"}
@@ -32,6 +35,9 @@ Meet the team behind the KODAQS Toolbox, which develops, reviews, and refines th
 
 **Çağla Yildiz**
 *Content Creation - Survey Data*
+
+**Leah von der Heyde**
+*Content Creation - Survey Data and AI*
 
 **Julian Dehne**
 *Alumnus*
