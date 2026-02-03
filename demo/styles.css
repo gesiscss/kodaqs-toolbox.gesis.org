@@ -108,3 +108,8 @@ embed.img-fluid {
 #quarto-appendix #quarto-reuse { order: 3 ; }
 #quarto-appendix #quarto-citation { order: 4 ; }
 #quarto-appendix .doi-section { order: 5 ; }
+
+/* Show Google Colab option only for .ipynb */
+.dropdown-menu li:has(a[href*="colab.research.google.com"]):not(:has(a[href*=".ipynb"])) {
+    display: none;
+}
