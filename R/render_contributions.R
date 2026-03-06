@@ -32,7 +32,7 @@ create_output_directory <- function(output_location) {
   }
 }
 
-render_single_contribution <- function(contribution_row, is_docker_rootless = FALSE, doi_mapping = NULL, self_assessment_mapping = NULL, user_code_database_mapping = NULL) {
+render_single_contribution <- function(contribution_row, is_docker_rootless = FALSE, doi_mapping = NULL, self_assessment_mapping = NULL, user_code_database_mapping = NULL, meet_the_experts_mapping = NULL) {
   logger::log_debug("Rendering {contribution_row['filename']} from {contribution_row['web_address']}")
 
   if (is_docker_rootless) {
@@ -171,7 +171,7 @@ render_single_contribution <- function(contribution_row, is_docker_rootless = FA
   # add the citation.cff data if available
   index_md <- file.path(output_location, file2render_basename, "index.md")
   citation_cff <- file.path(output_location, file2render_basename, "CITATION.cff")
-  update_citation_metadata(citation_file = citation_cff, output_file = index_md, doi_mapping = doi_mapping, self_assessment_mapping = self_assessment_mapping, user_code_database_mapping = user_code_database_mapping)
+  update_citation_metadata(citation_file = citation_cff, output_file = index_md, doi_mapping = doi_mapping, self_assessment_mapping = self_assessment_mapping, user_code_database_mapping = user_code_database_mapping, meet_the_experts_mapping = meet_the_experts_mapping)
   
   if (sum_docker_return_value == 0) {
     build_status <- "Built"
@@ -236,10 +236,11 @@ render_contributions <- function(all_contributions, is_docker_rootless = FALSE) 
     }
   }
   
-  # Extract self-assessment and user code database links
+  # Extract self-assessment, user code database, and meet-the-experts links
   content_contributions_path <- file.path(dirname(current_dir), "demo", "content-contributions.json")
   self_assessment_mapping <- list()
   user_code_database_mapping <- list()
+  meet_the_experts_mapping <- list()
   contributions_data <- jsonlite::read_json(content_contributions_path)
   
   for (contribution in contributions_data) {
@@ -251,11 +252,14 @@ render_contributions <- function(all_contributions, is_docker_rootless = FALSE) 
     if (!is.null(contribution$user_code_database)) {
       user_code_database_mapping[[web_addr]] <- contribution$user_code_database
     }
+    if (!is.null(contribution$meet_the_experts)) {
+      meet_the_experts_mapping[[web_addr]] <- contribution$meet_the_experts
+    }
   }
   
   all_contributions$status <- all_contributions |>
     apply(1, function(contribution_row) {
-      render_single_contribution(contribution_row, is_docker_rootless, doi_mapping, self_assessment_mapping, user_code_database_mapping)
+      render_single_contribution(contribution_row, is_docker_rootless, doi_mapping, self_assessment_mapping, user_code_database_mapping, meet_the_experts_mapping)
     })
 
   return(all_contributions)
@@ -264,7 +268,7 @@ render_contributions <- function(all_contributions, is_docker_rootless = FALSE) 
 #' Use CITATION.cff to fill the metadata for the tools
 #' This uses the created index.md file
 #'
-update_citation_metadata <- function(citation_file, output_file, doi_mapping = NULL, self_assessment_mapping = NULL, user_code_database_mapping = NULL) {
+update_citation_metadata <- function(citation_file, output_file, doi_mapping = NULL, self_assessment_mapping = NULL, user_code_database_mapping = NULL, meet_the_experts_mapping = NULL) {
 
   investigate_file_or_directory(output_file)
 
@@ -338,6 +342,7 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
 
   matching_self_assessment <- NULL
   matching_user_code_database <- NULL
+  matching_meet_the_experts <- NULL
   if (length(self_assessment_mapping) > 0 || length(user_code_database_mapping) > 0) {
     output_yaml <- rmarkdown::yaml_front_matter(output_file)
     repo_url <- output_yaml$github_https
@@ -348,6 +353,7 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
       clean_repo_url <- gsub("\\.git$", "", repo_url)
       matching_self_assessment <- self_assessment_mapping[[clean_repo_url]]
       matching_user_code_database <- user_code_database_mapping[[clean_repo_url]]
+      matching_meet_the_experts <- meet_the_experts_mapping[[clean_repo_url]]
     }
   }
 
@@ -441,6 +447,24 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
       ""
     )
     full_content <- c(full_content, user_code_database_section)
+  }
+
+  # Add meet-the-experts video section (only for HTML)
+  if (!is.null(matching_meet_the_experts)) {
+    embed_url <- sub("/watch\\?v=", "/embed/", matching_meet_the_experts)
+    meet_the_experts_section <- c(
+      "",
+      '::: {.content-visible when-format="html"}',
+      "",
+      '<section id="custom-meet-experts" class="level2 appendix custom-meet-experts-section">',
+      '<h2 class="anchored quarto-appendix-heading">Meet-the-Experts Video</h2>',
+      paste0('<iframe width="800" height="480" src="', embed_url, '" frameborder="0" allowfullscreen></iframe>'),
+      '</section>',
+      "",
+      ':::',
+      ""
+    )
+    full_content <- c(full_content, meet_the_experts_section)
   }
 
   # Add DOI section

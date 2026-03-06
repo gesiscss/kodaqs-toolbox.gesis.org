@@ -2,16 +2,18 @@
   {
     "web_address": "https://github.com/kraemefe/resquin-tool-application",
     "filename": "Resquin_Tool.qmd",
-    "version": "updates",
+    "version": "v1.1.0",
     "self_assessment": "https://forms.gle/9YbifnpjmEF4fWMW7",
-    "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3AResquin&l=list&p=1&s=10&sort=newest"
+    "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3AResquin&l=list&p=1&s=10&sort=newest",
+    "meet_the_experts": "https://www.youtube.com/watch?v=cnYADy7hhZg"
   },
   {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
     "filename": "index.qmd",
     "version": "v1.0",
     "self_assessment": "https://forms.gle/V3hpnjGZVFfu1jRu6",
-    "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3AAreaMatch&l=list&p=1&s=10&sort=newest"
+    "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3AAreaMatch&l=list&p=1&s=10&sort=newest",
+    "meet_the_experts": "https://www.youtube.com/watch?v=C8MgzztEi98"
   },
   {
     "web_address": "https://github.com/juliandehne/delab-trees",
@@ -22,7 +24,8 @@
     "web_address": "https://github.com/lukasbirki/tool_valitext",
     "filename": "index.qmd",
     "version": "final",
-    "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3AValiText&l=list&p=1&s=10&sort=newest"
+    "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3AValiText&l=list&p=1&s=10&sort=newest",
+    "meet_the_experts": "https://www.youtube.com/watch?v=hSdEuvxlUq4"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
@@ -43,7 +46,8 @@
   {
     "web_address": "https://github.com/BjoernRohr/KODAQS-Toolbox-SampcompR",
     "filename": "Tool_SampcompR.qmd",
-    "version": "v1.0"
+    "version": "v1.0",
+    "meet_the_experts": "https://www.youtube.com/watch?v=7kaTcLGpnWw"
   },
   {
     "web_address": "https://github.com/frohleon/tesd_tool",
