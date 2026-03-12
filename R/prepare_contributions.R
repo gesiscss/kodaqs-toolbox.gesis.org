@@ -61,5 +61,8 @@ prepare_contributions <- function(all_contributions) {
     "HTTP"
   )
 
+  # Drop list-columns (eg. from JSON arrays)
+  all_contributions <- all_contributions[, !sapply(all_contributions, is.list)]
+
   return(all_contributions)
 }

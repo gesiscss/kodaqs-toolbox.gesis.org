@@ -5,7 +5,11 @@
     "version": "v1.1.0",
     "self_assessment": "https://forms.gle/9YbifnpjmEF4fWMW7",
     "user_code_database": "https://zenodo.org/communities/kodaqs-code-database/records?q=&f=subject%3AResquin&l=list&p=1&s=10&sort=newest",
-    "meet_the_experts": "https://www.youtube.com/watch?v=cnYADy7hhZg"
+    "meet_the_experts": "https://www.youtube.com/watch?v=cnYADy7hhZg",
+    "survey_guides": [
+      {"name": "Response Biases in Standardised Surveys", "url": "https://www.gesis.org/fileadmin/admin/Dateikatalog/pdf/guidelines/antworttendenzen_bogner_landrock_2015.pdf"},
+      {"name": "Design of Rating Scales in Questionnaires", "url": "https://www.gesis.org/fileadmin/admin/Dateikatalog/pdf/guidelines/gestaltung_ratingskalen_frageboegen_menold_bogner_2015.pdf"}
+    ]
   },
   {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
@@ -30,7 +34,11 @@
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
     "filename": "index.qmd",
-    "version": "v1"
+    "version": "v1",
+    "survey_guides": [
+      {"name": "Validity in Survey Research", "url": "https://www.gesis.org/fileadmin/admin/Dateikatalog/pdf/guidelines/validity_in_survey_research_repke_birkenmaier_lechner_2024.pdf"},
+      {"name": "Documenting Measurement Instruments for the Social and Behavioral Sciences", "url": "https://www.gesis.org/fileadmin/admin/Dateikatalog/pdf/guidelines/documenting_measurement_instruments_schmidt_2020.pdf"}
+    ]
   },
   {
     "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
@@ -41,13 +49,23 @@
   {
     "web_address": "https://github.com/lukasbirki/tool_sqp",
     "filename": "index.qmd",
-    "version": "v2.0"
+    "version": "v2.0",
+    "survey_guides": [
+      {"name": "Question Wording", "url": "https://www.gesis.org/fileadmin/admin/Dateikatalog/pdf/guidelines/frageformulierung_lenzner_menold_2015.pdf"},
+      {"name": "Design of Rating Scales in Questionnaires", "url": "https://www.gesis.org/fileadmin/admin/Dateikatalog/pdf/guidelines/gestaltung_ratingskalen_frageboegen_menold_bogner_2015.pdf"},
+      {"name": "Measurement Instruments in Cross-national Surveys", "url": "https://www.gesis.org/fileadmin/admin/Dateikatalog/pdf/guidelines/messinstrumente_internationale_studien_behr_braun_dorer_2015.pdf"}
+    ]
   },
   {
     "web_address": "https://github.com/BjoernRohr/KODAQS-Toolbox-SampcompR",
     "filename": "Tool_SampcompR.qmd",
     "version": "v1.0",
-    "meet_the_experts": "https://www.youtube.com/watch?v=7kaTcLGpnWw"
+    "meet_the_experts": "https://www.youtube.com/watch?v=7kaTcLGpnWw",
+    "survey_guides": [
+      {"name": "Non-Probability Surveys", "url": "https://www.gesis.org/fileadmin/admin/Dateikatalog/pdf/guidelines/non_probability_surveys_rohr_felderer_silber_daikeler_rossmann_schroeder_2024.pdf"},
+      {"name": "Nonresponse Bias", "url": "https://www.gesis.org/fileadmin/admin/Dateikatalog/pdf/guidelines/nonresponse_bias_koch_blohm_2015.pdf"},
+      {"name": "Nonresponse Bias Analysis", "url": "https://www.gesis.org/fileadmin/admin/Dateikatalog/pdf/guidelines/nonresponse_bias_analysis_felderer_2024.pdf"}
+    ]
   },
   {
     "web_address": "https://github.com/frohleon/tesd_tool",
