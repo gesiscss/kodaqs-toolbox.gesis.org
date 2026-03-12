@@ -106,9 +106,10 @@ embed.img-fluid {
 #quarto-appendix .custom-quiz-section { order: 1 ; }
 #quarto-appendix .custom-database-section { order: 2 ; }
 #quarto-appendix .custom-meet-experts-section { order: 3 ; }
-#quarto-appendix #quarto-reuse { order: 4 ; }
-#quarto-appendix #quarto-citation { order: 5 ; }
-#quarto-appendix .doi-section { order: 6 ; }
+#quarto-appendix .custom-survey-guides-section { order: 4 ; }
+#quarto-appendix #quarto-reuse { order: 5 ; }
+#quarto-appendix #quarto-citation { order: 6 ; }
+#quarto-appendix .doi-section { order: 7 ; }
 
 /* Show Google Colab option only for .ipynb */
 .dropdown-menu li:has(a[href*="colab.research.google.com"]):not(:has(a[href*=".ipynb"])) {
