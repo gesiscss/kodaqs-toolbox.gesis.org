@@ -32,7 +32,7 @@ create_output_directory <- function(output_location) {
   }
 }
 
-render_single_contribution <- function(contribution_row, is_docker_rootless = FALSE, doi_mapping = NULL, self_assessment_mapping = NULL, user_code_database_mapping = NULL, meet_the_experts_mapping = NULL, survey_guides_mapping = NULL) {
+render_single_contribution <- function(contribution_row, is_docker_rootless = FALSE, doi_mapping = NULL, self_assessment_mapping = NULL, user_code_database_mapping = NULL, meet_the_experts_mapping = NULL, related_materials_mapping = NULL) {
   logger::log_debug("Rendering {contribution_row['filename']} from {contribution_row['web_address']}")
 
   if (is_docker_rootless) {
@@ -171,7 +171,7 @@ render_single_contribution <- function(contribution_row, is_docker_rootless = FA
   # add the citation.cff data if available
   index_md <- file.path(output_location, file2render_basename, "index.md")
   citation_cff <- file.path(output_location, file2render_basename, "CITATION.cff")
-  update_citation_metadata(citation_file = citation_cff, output_file = index_md, doi_mapping = doi_mapping, self_assessment_mapping = self_assessment_mapping, user_code_database_mapping = user_code_database_mapping, meet_the_experts_mapping = meet_the_experts_mapping, survey_guides_mapping = survey_guides_mapping)
+  update_citation_metadata(citation_file = citation_cff, output_file = index_md, doi_mapping = doi_mapping, self_assessment_mapping = self_assessment_mapping, user_code_database_mapping = user_code_database_mapping, meet_the_experts_mapping = meet_the_experts_mapping, related_materials_mapping = related_materials_mapping)
   
   if (sum_docker_return_value == 0) {
     build_status <- "Built"
@@ -241,7 +241,7 @@ render_contributions <- function(all_contributions, is_docker_rootless = FALSE) 
   self_assessment_mapping <- list()
   user_code_database_mapping <- list()
   meet_the_experts_mapping <- list()
-  survey_guides_mapping <- list()
+  related_materials_mapping <- list()
   contributions_data <- jsonlite::read_json(content_contributions_path)
   
   for (contribution in contributions_data) {
@@ -256,14 +256,14 @@ render_contributions <- function(all_contributions, is_docker_rootless = FALSE) 
     if (!is.null(contribution$meet_the_experts)) {
       meet_the_experts_mapping[[web_addr]] <- contribution$meet_the_experts
     }
-    if (!is.null(contribution$survey_guides)) {
-      survey_guides_mapping[[web_addr]] <- contribution$survey_guides
+    if (!is.null(contribution$related_materials)) {
+      related_materials_mapping[[web_addr]] <- contribution$related_materials
     }
   }
   
   all_contributions$status <- all_contributions |>
     apply(1, function(contribution_row) {
-      render_single_contribution(contribution_row, is_docker_rootless, doi_mapping, self_assessment_mapping, user_code_database_mapping, meet_the_experts_mapping, survey_guides_mapping)
+      render_single_contribution(contribution_row, is_docker_rootless, doi_mapping, self_assessment_mapping, user_code_database_mapping, meet_the_experts_mapping, related_materials_mapping)
     })
 
   return(all_contributions)
@@ -272,7 +272,7 @@ render_contributions <- function(all_contributions, is_docker_rootless = FALSE) 
 #' Use CITATION.cff to fill the metadata for the tools
 #' This uses the created index.md file
 #'
-update_citation_metadata <- function(citation_file, output_file, doi_mapping = NULL, self_assessment_mapping = NULL, user_code_database_mapping = NULL, meet_the_experts_mapping = NULL, survey_guides_mapping = NULL) {
+update_citation_metadata <- function(citation_file, output_file, doi_mapping = NULL, self_assessment_mapping = NULL, user_code_database_mapping = NULL, meet_the_experts_mapping = NULL, related_materials_mapping = NULL) {
 
   investigate_file_or_directory(output_file)
 
@@ -347,7 +347,7 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
   matching_self_assessment <- NULL
   matching_user_code_database <- NULL
   matching_meet_the_experts <- NULL
-  matching_survey_guides <- NULL
+  matching_related_materials <- NULL
   if (length(self_assessment_mapping) > 0 || length(user_code_database_mapping) > 0) {
     output_yaml <- rmarkdown::yaml_front_matter(output_file)
     repo_url <- output_yaml$github_https
@@ -359,7 +359,7 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
       matching_self_assessment <- self_assessment_mapping[[clean_repo_url]]
       matching_user_code_database <- user_code_database_mapping[[clean_repo_url]]
       matching_meet_the_experts <- meet_the_experts_mapping[[clean_repo_url]]
-      matching_survey_guides <- survey_guides_mapping[[clean_repo_url]]
+      matching_related_materials <- related_materials_mapping[[clean_repo_url]]
     }
   }
 
@@ -473,15 +473,15 @@ update_citation_metadata <- function(citation_file, output_file, doi_mapping = N
     full_content <- c(full_content, meet_the_experts_section)
   }
 
-  # Add survey guides section (only for HTML)
-  if (!is.null(matching_survey_guides)) {
-    links <- sapply(matching_survey_guides, function(g)
+  # Add related materials section (only for HTML)
+  if (!is.null(matching_related_materials)) {
+    links <- sapply(matching_related_materials, function(g)
       paste0('<a target="_blank" rel="noopener noreferrer" href="', g$url, '">', g$name, '</a>'))
 
     full_content <- c(full_content, "",
       '::: {.content-visible when-format="html"}', "",
-      '<section id="custom-survey-guides" class="level2 appendix custom-survey-guides-section">',
-      '<h2 class="anchored quarto-appendix-heading">Survey Guides</h2>',
+      '<section id="custom-related-materials" class="level2 appendix custom-related-materials-section">',
+      '<h2 class="anchored quarto-appendix-heading">Related Materials</h2>',
       paste0('<p>', paste(links, collapse = '<br>'), '</p>'),
       '</section>', "", ':::', "")
   }
