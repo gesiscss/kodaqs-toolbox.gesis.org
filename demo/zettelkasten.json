@@ -25,6 +25,10 @@
         "web_address": "https://github.com/BjoernRohr/KODAQS-Toolbox-SampcompR",
         "filename": "Tool_SampcompR.qmd",
         "doi": "https://doi.org/10.71627/sampcompr"
+      },
+      {
+        "web_address": "https://github.com/dariadementeva/KODAQS_OSM",
+        "filename": "index.qmd"
       }
     ]
   },
@@ -139,6 +143,10 @@
         "web_address": "https://github.com/StefanJuenger/zipmatching",
         "filename": "index.qmd",
         "doi": "https://doi.org/10.71627/areamatch"
+      },
+      {
+        "web_address": "https://github.com/dariadementeva/KODAQS_OSM",
+        "filename": "index.qmd"
       }
     ]
   },
