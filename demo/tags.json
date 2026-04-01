@@ -105,5 +105,13 @@
       "NLP",
       "Datasets"
     ]
+  },
+  {
+    "web_address": "https://github.com/dariadementeva/KODAQS_OSM",
+    "filename": "index.qmd",
+    "tags": [
+      "linked data",
+      "representation error"
+    ]
   }
 ]
