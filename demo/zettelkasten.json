@@ -28,7 +28,8 @@
       },
       {
         "web_address": "https://github.com/dariadementeva/KODAQS_OSM",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/osmBias"
       }
     ]
   },
@@ -146,7 +147,8 @@
       },
       {
         "web_address": "https://github.com/dariadementeva/KODAQS_OSM",
-        "filename": "index.qmd"
+        "filename": "index.qmd",
+        "doi": "https://doi.org/10.71627/osmBias"
       }
     ]
   },
