@@ -28,5 +28,6 @@ find . \
 find . \
     \( \
     \( -type d -iname 'libs' \) \
+    -o \( -type d -iname '*_datafiles' \) \
     \) | \
     xargs -I {} cp -r --parents {} $output_dirname
